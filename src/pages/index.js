@@ -1,6 +1,7 @@
 import React from 'react';
 import Head from 'next/head';
 import styles from '../styles/Home.module.css';
+import ListItem from '../components/listItem';
 
 export default function Home() {
   return (
@@ -14,6 +15,9 @@ export default function Home() {
         <div>
           <img src="/assets/robotics.png" alt="robot" />
           <h1>Hello world!</h1>
+        </div>
+        <div>
+          <ListItem />
         </div>
       </main>
     </div>
