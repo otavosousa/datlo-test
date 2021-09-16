@@ -11,7 +11,10 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main>
-        <h1>Hello world!</h1>
+        <div>
+          <img src="/assets/robotics.png" alt="robot" />
+          <h1>Hello world!</h1>
+        </div>
       </main>
     </div>
   );
