@@ -1,8 +1,12 @@
 import { createStore, combineReducers } from 'redux';
-import addItemReducer from '../reducer/addItemReducer';
+import coordinatesReducer from '../reducer/coordinatesReducer';
+import polygonReducer from '../reducer/polygonReducer'
+import loadingReducer from '../reducer/loadingReducer'
 
 const reducers = combineReducers({
-  addItemReducer,
+  coordinatesReducer,
+  polygonReducer,
+  loadingReducer
 });
 
 const store = createStore(reducers);

@@ -1,0 +1,61 @@
+.main {
+  margin-top: 30px;
+}
+
+.citiesContainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  margin-top: 20px;
+}
+
+.ul {
+  list-style-type: none;
+  padding-inline-start: 0px;
+  height: 500px;
+  overflow: scroll;
+  overflow-x: hidden;
+}
+
+.citieLabelContainer {
+  background-color: #2EB87C;
+  width: 120px;
+  height: 120px;
+  border-radius: 30px;
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  justify-content: center;
+  color: white;
+}
+
+.citieDescriptionText {
+
+  display: flex;
+  align-items: center;
+  color: #9B9B9B;
+  margin: 0px 0px 10px 0px;
+}
+
+.citieDescriptionLink {
+  font-weight: 500;
+}
+
+.citieDescriptionIcon {
+  width: 16px;
+  margin-right: 5px;
+}
+
+@media screen and (max-width: 700px) {
+  .citiesContainer {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+  }
+  .citieLabelContainer {
+    margin-right: 20px;
+  }
+  .ul {
+    height: 320px;
+  }
+}

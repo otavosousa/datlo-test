@@ -1,24 +1,27 @@
 import React from 'react';
 import Head from 'next/head';
-import styles from '../styles/Home.module.css';
-import ListItem from '../components/listItem';
+import styles from './styles.module.css';
+import Map from '../components/Map';
+import Nav from '../components/Nav'
+import Loading from '../components/Loading';
+import { useSelector } from 'react-redux';
+
 
 export default function Home() {
+
+  const loading = useSelector((state) => state.loadingReducer.data);
+
   return (
     <div className={styles.container}>
       <Head>
-        <title>Hello world</title>
-        <meta name="description" content="Setup with nextjs" />
+        <title>Mapa</title>
+        <meta name="description" content="Mapa" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main>
-        <div>
-          <img src="/assets/robotics.png" alt="robot" />
-          <h1>Hello world!</h1>
-        </div>
-        <div>
-          <ListItem />
-        </div>
+      <main className={styles.main}>
+        {loading && <Loading />}
+        <Nav />
+        <Map />
       </main>
     </div>
   );
