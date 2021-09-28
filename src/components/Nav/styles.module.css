@@ -3,7 +3,7 @@
     position: absolute;
     top: 0;
     z-index: 9999;
-    width: 400px;
+    width: 420px;
     margin: 10px 0px 0px 50px; 
     height: 99vh;
     background-color:white;
@@ -16,6 +16,12 @@
   width: 20px;
   height: 20px;
   margin-right: 10px;
+}
+
+.delIcon {
+  width: 25px;
+  height: 25px;
+  margin-left: 10px;
 }
 
 .header {
@@ -32,10 +38,6 @@
     justify-content: center;
     width: 100%;
     margin-bottom: 20px;
-}
-
-.main {
-  margin-top: 30px;
 }
 
 .btn {

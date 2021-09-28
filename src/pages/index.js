@@ -17,7 +17,7 @@ export default function Home() {
       </Head>
       <main className={styles.main}>
         <Nav />
-        <Map className={styles.homeMap} center={coords} zoom={12}>
+        <Map className={styles.homeMap} center={coords} zoom={13}>
           {({ TileLayer, Marker, Popup }) => (
             <>
               <TileLayer

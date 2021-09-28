@@ -1,65 +1,55 @@
 import React, { useEffect, useState } from 'react';
 import styles from './styles.module.css';
 import Cities from '../../factories/Cities';
-import NavList from '../NavList';
+import NavMain from '../NavMain';
+import NavHeader from '../NavHeader'
+import NavFooter from '../NavFooter'
+import NavBanner from '../NavBanner';
 
 export default function Nav() {
   const cities = new Cities();
   const [citiesList, setCitiesList] = useState([]);
-  const [page, setPage] = useState(1);
+  const [pageIndexCity, setPageIndexCity] = useState(1);
+  const [pageSeachCity, setPageSeachCity] = useState(1);
+  const [searching, setSearching] = useState({done: false, text: ''})
 
-  const handleCities = async () => {
-    const citiesIndex = await cities.index(page);
+  const handleIndexCities = async () => {
+    const citiesIndex = await cities.index(pageIndexCity);
     setCitiesList([...citiesList, ...citiesIndex]);
-    setPage(page + 1);
+    setPageIndexCity(pageIndexCity + 1)
   };
 
-  useEffect(() => {
-    handleCities();
-  }, []);
-
-  if (citiesList.length === 0) {
-    return <div>Carregando...</div>;
+  async function handleSearchCities() {
+    const citySearch = await cities.search(searching.text, pageSeachCity);
+    if(pageSeachCity < citySearch.totalPages) {
+      setCitiesList([...citiesList, ...citySearch.items])
+      setPageSeachCity(pageSeachCity + 1)
+    }
   }
+
+  useEffect(() => {
+    handleIndexCities();
+  }, []);
 
   return (
     <nav className={styles.nav}>
-      <header className={styles.header}>
-        <div className={styles.searchContainer}>
-          <img
-            src="/assets/search.svg"
-            alt="search"
-            className={styles.searchIcon}
+      <NavHeader 
+        cities={cities} 
+        setList={setCitiesList} 
+        setSearching={setSearching}
+        page={pageSeachCity}
+        setPage={setPageSeachCity}
+      />
+      {citiesList.length === 0 ?
+        <NavBanner />
+      :
+        <>
+          <NavMain list={citiesList}/>
+          <NavFooter 
+            handleLoad={searching.done ? handleSearchCities : handleIndexCities}
           />
-          <input
-            placeholder="Cidade, código IBGE ou UF"
-            type="text"
-            className={styles.searchInput}
-          />
-        </div>
-        <button
-          type="button"
-          className={styles.btn}
-          onClick={() => console.log('oi')}
-        >
-          Pesquisar
-        </button>
-      </header>
-      <main>
-        <div className={styles.main}>
-          <span>Encontrar cidade</span>
-          <NavList list={citiesList} />
-        </div>
-      </main>
-      <footer className={styles.footer}>
-        <button
-          type="button"
-          className={styles.btn}
-          onClick={() => handleCities()}
-        >
-          Carregar mais
-        </button>
-      </footer>
+        </>
+      }
     </nav>
   );
 }
