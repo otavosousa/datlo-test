@@ -23,7 +23,24 @@ export default function Cities() {
     return citiesData.items;
   }
 
+  async function search(string, page = 1) {
+    console.log(page)
+    const cityResponse = await fetch(
+      `https://api.development.datlo.com/Cities?searchString=${string}&pageNumber=${page}`,
+      {
+        method: 'GET',
+        mode: 'cors',
+        headers: { 'Content-Type': 'application/json' },
+      },
+    );
+    const cityJson = await cityResponse.json();
+    const cityData = await cityJson;
+
+    return cityData;
+  }
+
   return {
+    search,
     index,
   };
 }
