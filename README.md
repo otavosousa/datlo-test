@@ -14,12 +14,26 @@
 <code>git clone https://github.com/otavosousa/map.git</code>
 <br>
 <br>
-<b>Install dependences<b>
+<b>Create a file .env.local in the project root directory with this code:<b>
+<br>
+<code>
+    NEXT_PUBLIC_API_BASE_URL=https://www.api.development.datlo.com
+</code>
+<br>
+<code>
+    NEXT_PUBLIC_DEFAULT_IBGE_CODE=4115200
+</code>
+<br>
+<code>
+    NEXT_PUBLIC_API_IBGE=https://servicodados.ibge.gov.br/api/v3/malhas/municipios
+</code>
+<br>
+<br>
+<b>Install dependences and run the project<b>
+<br>
+<code>cd map</code>
 <br>
 <code>npm install</code>
-<br>
-<br>
-<b>Run<b>
 <br>
 <code>npm run dev</code>
 
