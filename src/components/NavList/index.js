@@ -1,20 +1,27 @@
 import React from 'react';
 import styles from './styles.module.css';
 import City from '../../factories/City';
+import { useDispatch, useSelector } from 'react-redux';
 
 export default function NavList({ list }) {
 
   const city = new City();
+  const dispatch = useDispatch();
 
   async function handleCity(ibgeCode) {
     const cityShow = await city.show(ibgeCode);
 
     const coordinates = [
-      cityShow.centroide.longitude,
       cityShow.centroide.latitude,
+      cityShow.centroide.longitude,
     ];
 
-    console.log(coordinates)
+    dispatch({
+      type: 'SET_COORDINATES',
+      data: coordinates,
+    });
+
+    // console.log(coordinates)
   }
 
   return (
