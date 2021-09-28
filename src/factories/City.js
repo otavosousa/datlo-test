@@ -1,5 +1,6 @@
 export default function City() {
-  async function show(ibgeCode) {
+
+  async function getCoords(ibgeCode) {
     const cityResponse = await fetch(
       `https://servicodados.ibge.gov.br/api/v3/malhas/municipios/${ibgeCode}/metadados`,
       {
@@ -11,10 +12,15 @@ export default function City() {
     const cityJson = await cityResponse.json();
     const cityData = await cityJson;
 
-    return cityData[0];
+    const coordinates = [
+      cityData[0].centroide.latitude,
+      cityData[0].centroide.longitude,
+    ];
+
+    return coordinates;
   }
 
   return {
-    show,
+    getCoords,
   };
 }
