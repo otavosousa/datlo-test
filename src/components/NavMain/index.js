@@ -9,12 +9,35 @@ export default function NavMain({ list }) {
   const dispatch = useDispatch();
 
   async function handleLoadCity(ibgeCode) {
+    dispatch({
+      type: 'SET_LOADING',
+      data: true,
+    });
+    
     const cityCoords = await city.getCoords(ibgeCode);
+    const cityShow = await city.show(ibgeCode);
+
+    if(cityShow) {
+      const cityShowData = await cityShow.features
+      dispatch({
+        type: 'SET_POLYGON',
+        data: cityShowData,
+      });
+    }
 
     dispatch({
       type: 'SET_COORDINATES',
       data: cityCoords,
     });
+
+    setTimeout(() => {
+      dispatch({
+        type: 'SET_LOADING',
+        data: false,
+      });
+    }, 1000)
+
+
   }
 
   return (

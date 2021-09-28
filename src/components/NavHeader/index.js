@@ -37,6 +37,7 @@ export default function NavHeader({cities, setList, setSearching, setPage, page}
           type="text"
           className={styles.searchInput}
           value={text}
+          onKeyPress={(e) => e.code === 'Enter' && handleSearchCities()}
           onChange={(e) => {
             setText(e.target.value)
             setPage(1)
