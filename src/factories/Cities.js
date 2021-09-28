@@ -1,7 +1,7 @@
 export default function Cities() {
   async function index(page = 1) {
     const citiesResponse = await fetch(
-      `https://www.api.development.datlo.com/Cities?pageNumber=${page}`,
+      `${process.env.NEXT_PUBLIC_API_BASE_URL}/Cities?pageNumber=${page}`,
       {
         method: 'GET',
         mode: 'cors',
@@ -10,23 +10,12 @@ export default function Cities() {
     );
     const citiesJson = await citiesResponse.json();
     const citiesData = await citiesJson;
-
-    // const citieResponse = await fetch('https://www.api.development.datlo.com/map/city?ibgeCode=4115200', {
-    //   method: "GET",
-    //   mode: 'cors',
-    //   headers: { 'Content-Type': 'application/json',
-    // }})
-    // const citieJson = await citieResponse.json()
-    // const citieData =  await citieJson
-    // console.log(citieData)
-
     return citiesData.items;
   }
 
   async function search(string, page = 1) {
-    console.log(page)
     const cityResponse = await fetch(
-      `https://api.development.datlo.com/Cities?searchString=${string}&pageNumber=${page}`,
+      `${process.env.NEXT_PUBLIC_API_BASE_URL}/Cities?searchString=${string}&pageNumber=${page}`,
       {
         method: 'GET',
         mode: 'cors',
