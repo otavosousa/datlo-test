@@ -9,18 +9,13 @@
 }
 
 .main {
-
   width: 99vw;
 }
+
 
 @media screen and (max-width: 700px) {
   .homeMap {
     width: 100%;
     height: 250px;
   }
-}
-
-.homeMap {
-  width: 100vw;
-  height: 100vh;
 }

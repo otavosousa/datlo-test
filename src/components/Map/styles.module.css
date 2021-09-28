@@ -2,4 +2,7 @@
   width: 100%;
 }
 
-
+.homeMap {
+  width: 100vw;
+  height: 100vh;
+}
